@@ -6,44 +6,19 @@
     <title>Edit User</title>
 </head>
 <body>
-<!--<form th:method="PATCH" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}">-->
-<!--    <div>-->
-<!--        <label for="name">Name</label>-->
-<!--        <input type="text" th:field="*{name}" id="name">-->
-<!--        <hr>-->
-<!--        <input type="submit" value="Edit User">-->
-<!--    </div>-->
-<!--</form>-->
-
-<form action="#" th:method="PATCH" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}">
-    <table>
-        <tr>
-            <td>
-                <label for="name">Enter name</label>
-                <input type="text" th:field="*{name}" id="name" required/>
-            </td>
-        </tr>
-        <br>
-        <tr>
-            <td>
-                <label for="surname">Enter surname</label>
-                <input type="text" th:field="*{lastName}" id="surname"/>
-            </td>
-        </tr>
-        <br>
-        <tr>
-            <td>
-                <label for="age">Enter age</label>
-                <input type="number" min="0" max="127" th:field="*{age}" id="age">
-            </td>
-        </tr>
-        <br>
-        <tr>
-            <td>
-                <input type="submit" class="buttonEdit" value="Edit user"/>
-            </td>
-        </tr>
-    </table>
+<form th:method="Patch" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}">
+    <div>
+        <label for="name">Name</label>
+        <input type="text" th:field="*{name}" id="name">
+        <hr>
+        <label for="lastName">Last Name</label>
+        <input type="text" th:field="*{lastName}" id="lastName">
+        <hr>
+        <label for="age">Age</label>
+        <input type="number" th:field="*{age}" id="age">
+        <hr>
+        <input type="submit" value="Edit User">
+    </div>
 </form>
 </body>
 </html>
