@@ -47,23 +47,18 @@ public class UsersController {
     @GetMapping("/users/{id}/edit")
     public String editUser(@PathVariable("id") long id, Model model) {
         model.addAttribute("user", userdao.getUserById(id));
-        User user1 = (User) model.getAttribute("user");
-        System.out.println(id + " " + user1.getName());
         return "users/edit";
     }
 
     @PatchMapping("/users/{id}")
     public String editUser(@ModelAttribute("user") User user, @PathVariable("id") long id) {
-        System.out.println("edit " + id + " " + user.getName());
         userdao.editUser(id, user);
         return "redirect:/users";
     }
     
     @DeleteMapping("/users/{id}")
     public String deleteUser(@PathVariable("id") long id) {
-        System.out.println("delete = " + id);
         userdao.deleteUser(id);
-        System.out.println(userdao.getAllUser());
         return "redirect:/users";
     }
 
