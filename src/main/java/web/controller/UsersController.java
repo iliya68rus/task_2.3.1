@@ -15,6 +15,11 @@ public class UsersController {
     @Autowired
     private UserDAO userdao;
 
+    @GetMapping("/")
+    public String start() {
+        return "redirect:/users";
+    }
+
     @GetMapping("/users")
     public String showUsers(Model model) {
         model.addAttribute("users", userdao.getAllUser());
@@ -51,6 +56,14 @@ public class UsersController {
     public String editUser(@ModelAttribute("user") User user, @PathVariable("id") long id) {
         System.out.println("edit " + id + " " + user.getName());
         userdao.editUser(id, user);
+        return "redirect:/users";
+    }
+    
+    @DeleteMapping("/users/{id}")
+    public String deleteUser(@PathVariable("id") long id) {
+        System.out.println("delete = " + id);
+        userdao.deleteUser(id);
+        System.out.println(userdao.getAllUser());
         return "redirect:/users";
     }
 

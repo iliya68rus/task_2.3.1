@@ -13,6 +13,8 @@
         <th scope="col">Name</th>
         <th scope="col">Last Name</th>
         <th scope="col">Age</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -21,9 +23,21 @@
         <td th:text="${user.name}"/>
         <td th:text="${user.lastName}"/>
         <td th:text="${user.age}"/>
+        <td>
+            <form th:action="@{/users/{id}/edit(id=${user.id})}">
+                <input type="submit" value="Edit">
+            </form>
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{/users/{id}(id=${user.id})}">
+                <input type="submit" value="Delete">
+            </form>
+        </td>
     </tr>
     </tbody>
 </table>
-
+<form th:action="@{/users/new}">
+    <input type="submit" value="Add User">
+</form>
 </body>
 </html>

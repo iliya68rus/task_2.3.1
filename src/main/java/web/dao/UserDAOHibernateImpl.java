@@ -14,7 +14,7 @@ public class UserDAOHibernateImpl implements UserDAO {
     {
         userList = new ArrayList<>();
 
-        userList.add(new User(++ID_NUMBER,"Ivan", "Pyhkin", (byte) 23));
+        userList.add(new User(++ID_NUMBER, "Ivan", "Pyhkin", (byte) 23));
         userList.add(new User(++ID_NUMBER, "Aleks", "Evdokim", (byte) 46));
     }
 
@@ -24,7 +24,7 @@ public class UserDAOHibernateImpl implements UserDAO {
 
     @Override
     public User getUserById(long id) {
-        for (User user:userList) {
+        for (User user : userList) {
             if (user.getId() == id) {
                 return user;
             }
@@ -43,6 +43,17 @@ public class UserDAOHibernateImpl implements UserDAO {
         userOld.setName(user.getName());
         userOld.setLastName(user.getLastName());
         userOld.setAge(user.getAge());
+    }
+
+    @Override
+    public void deleteUser(long id) {
+        int i = -1;
+        for (User user : userList) {
+            if (user.getId() == id) {
+                i = userList.indexOf(user);
+            }
+        }
+        userList.remove(i);
     }
 
 }
